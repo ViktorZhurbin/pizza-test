@@ -7,6 +7,7 @@ import { ProductType } from '@/modules/home/typings';
 import styles from './Product.module.css';
 import { useContext } from 'react';
 import { CurrencyContext } from '@/contexts/Currency';
+import { CartButton } from '../../components/CartButton';
 
 type Props = {
     product: ProductType;
@@ -32,6 +33,7 @@ export const Product: React.FC<Props> = ({ product }) => {
                 <h2 className={styles.title}>Description</h2>
                 <div className={styles.description}>{description}</div>
             </div>
+            <CartButton product={product} />
         </Layout>
     );
 };
