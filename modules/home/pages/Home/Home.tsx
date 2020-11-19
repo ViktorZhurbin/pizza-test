@@ -1,7 +1,8 @@
-import Head from 'next/head';
 import faker from 'faker/locale/de';
 import { Product } from '../../components/Product';
 import { ProductType } from '../../typings';
+import { Layout } from '../../../../components/Layout';
+import styles from './Home.module.css';
 
 const generateNFakePizzas = (n: number): ProductType[] => {
   faker.seed(123);
@@ -19,17 +20,12 @@ const mockData = generateNFakePizzas(10);
 
 export const Home = () => {
   return (
-    <div>
-      <Head>
-        <title>Best pizza in town</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>
+    <Layout title="Best pizza in town">
+      <main className={styles.main}>
         {mockData.map((product) => (
           <Product key={product.id} product={product} />
         ))}
       </main>
-    </div>
+    </Layout>
   );
 };
