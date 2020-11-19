@@ -12,10 +12,10 @@ interface Props {
 }
 
 export const Product: React.FC<Props> = ({
-    product: { id, title, price, image },
+    product: { _id, title, price, image },
 }) => {
     return (
-        <Link href={`/product/${id}`}>
+        <Link href={`/product/${_id}`}>
             <a className={styles.container}>
                 <Image
                     className={styles.image}
