@@ -5,6 +5,8 @@ import { formatPrice } from '@/utils/string';
 
 import { ProductType } from '@/modules/home/typings';
 import styles from './Product.module.css';
+import { useContext } from 'react';
+import { CurrencyContext } from '@/contexts/Currency';
 
 type Props = {
     product: ProductType;
@@ -12,6 +14,7 @@ type Props = {
 
 export const Product: React.FC<Props> = ({ product }) => {
     const { image, title, description, price } = product;
+    const { currency } = useContext(CurrencyContext);
 
     return (
         <Layout>
@@ -23,7 +26,9 @@ export const Product: React.FC<Props> = ({ product }) => {
                     className={styles.image}
                 />
                 <h1 className={styles.title}>{title}</h1>
-                <span className={styles.price}>{formatPrice(price)}</span>
+                <span className={styles.price}>
+                    {formatPrice(price[currency], currency)}
+                </span>
                 <h2 className={styles.title}>Description</h2>
                 <div className={styles.description}>{description}</div>
             </div>

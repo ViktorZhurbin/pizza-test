@@ -10,8 +10,8 @@ export const productSchema = new mongoose.Schema({
         required: true,
     },
     price: {
-        type: Number,
-        required: true,
+        EUR: Number,
+        USD: Number,
     },
     image: String,
 });
