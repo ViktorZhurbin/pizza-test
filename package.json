@@ -1,5 +1,5 @@
 {
-    "name": "pizza",
+    "name": "pizza-test",
     "version": "0.1.0",
     "engines": {
         "node": ">=13"
