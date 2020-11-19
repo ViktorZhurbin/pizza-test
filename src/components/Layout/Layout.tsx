@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { Header } from '../Header';
 import styles from './Layout.module.css';
 
 type Props = {
@@ -12,6 +13,7 @@ export const Layout: React.FC<Props> = ({ children, title }) => {
                 {Boolean(title) && <title>{title}</title>}
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+            <Header />
             <div className={styles.content}>{children}</div>
         </div>
     );
