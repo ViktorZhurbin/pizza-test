@@ -16,12 +16,12 @@
 }
 
 .lineValue {
-    composes: linetitle;
+    composes: lineTitle;
     font-weight: bold;
 }
 
 .title {
-    composes: linetitle;
+    composes: lineTitle;
     font-weight: bold;
     font-size: 20px;
 }

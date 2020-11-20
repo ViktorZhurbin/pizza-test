@@ -8,6 +8,14 @@
     ],
     "rules": {
         "prettier/prettier": true,
+        "value-keyword-case": [
+            "lower",
+            {
+                "ignoreProperties": [
+                    "composes"
+                ]
+            }
+        ],
         "property-no-unknown": [
             true,
             {
