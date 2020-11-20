@@ -1,19 +1,29 @@
+.container {
+    border-top: 1px solid #d6dbe0;
+    margin-top: 16px;
+}
+
 .wrapper {
     display: flex;
     justify-content: space-between;
-    margin-top: 16px;
     padding-top: 16px;
 }
 
-.wrapper:not(:last-of-type) {
-    border-top: 1px solid #d6dbe0;
+.lineTitle {
+    font-size: 14px;
+    line-height: 1.4em;
+    color: #001a34;
+}
+
+.lineValue {
+    composes: linetitle;
+    font-weight: bold;
 }
 
 .title {
-    font-weight: 700;
+    composes: linetitle;
+    font-weight: bold;
     font-size: 20px;
-    line-height: 1.4em;
-    color: #001a34;
 }
 
 .subtitle {
