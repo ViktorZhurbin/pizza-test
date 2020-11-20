@@ -20,7 +20,9 @@ export const Input: React.FC<Props> = ({ error, register, ...props }) => {
                 ref={register}
                 {...props}
             />
-            <span className={styles.errorMessage}>{error?.message}</span>
+            {error?.message && (
+                <span className={styles.errorMessage}>{error.message}</span>
+            )}
         </>
     );
 };

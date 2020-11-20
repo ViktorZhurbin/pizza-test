@@ -8,12 +8,8 @@
     transition: border-color 0.2s ease-in;
 }
 
-.input.error {
-    border-color: #fdb8cc;
-}
-
-.input:not(:first-of-type) {
-    margin-top: 12px;
+.input:not(:last-of-type) {
+    margin-bottom: 30px;
 }
 
 .input:hover,
@@ -22,8 +18,22 @@
     border-color: #99bdff;
 }
 
+.input.error {
+    border-color: #fdb8cc;
+    margin-bottom: 0;
+}
+
+.input.error:hover,
+.input.error:focus {
+    border-color: #ec7396;
+    margin-bottom: 0;
+}
+
 .errorMessage {
-    margin-top: 6px;
+    display: flex;
+    align-self: flex-start;
+    margin-top: 5px;
+    margin-bottom: 10px;
     font-size: 12px;
     line-height: 1.33;
     color: #f91155;
