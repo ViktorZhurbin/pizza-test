@@ -4,11 +4,11 @@ import { Layout } from '@/components/Layout';
 import { fetcher } from '@/utils/api';
 
 import { Product } from '../../components/Product';
-import { ProductType } from '../../typings';
+import { ProductType } from '../../../product/typings';
 
 import styles from './Home.module.css';
 
-export const Home: React.FC = () => {
+export const HomePage: React.FC = () => {
     const { data, error } = useSwr<ProductType[]>('/api/products', fetcher);
 
     if (!data && !error) {

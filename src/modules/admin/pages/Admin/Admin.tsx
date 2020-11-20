@@ -2,7 +2,7 @@ import { createProducts, deleteProducts } from '../../services';
 import { generateNFakeProducts } from '../../utils';
 import styles from './Admin.module.css';
 
-export const Admin: React.FC = () => {
+export const AdminPage: React.FC = () => {
     const fillDb = () => createProducts(generateNFakeProducts(10));
     const clearDb = async () => {
         await deleteProducts();

@@ -25,7 +25,9 @@ export default async (
         if (method === 'DELETE') {
             const { deletedCount } = await ProductModel.deleteMany(body.filter);
 
-            res.status(200).json(`Deleted ${deletedCount} products`);
+            res.status(200).json({
+                result: `Deleted ${deletedCount} products`,
+            });
         }
     } catch (error) {
         res.status(400).json(error.message);

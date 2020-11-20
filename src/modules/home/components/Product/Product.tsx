@@ -4,7 +4,7 @@ import React, { useContext } from 'react';
 import { CurrencyContext } from '@/contexts/Currency';
 import { formatPrice } from '@/utils/string';
 
-import { ProductType } from '../../typings';
+import { ProductType } from '../../../product/typings';
 import styles from './Product.module.css';
 
 interface Props {
@@ -29,7 +29,7 @@ export const Product: React.FC<Props> = ({
                 />
                 <div className={styles.details}>
                     <div className={styles.price}>
-                        {formatPrice(price[currency], currency)}
+                        {formatPrice(price, currency)}
                     </div>
                     <div className={styles.title}>{title}</div>
                 </div>

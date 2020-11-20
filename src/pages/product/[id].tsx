@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { ProductModel } from '@/db/models';
 import { dbConnect } from '@/db/utils';
 import { Product } from '@/modules/product/pages';
-import { ProductType } from '@/modules/home/typings';
+import { ProductType } from '@/modules/product/typings';
 
 type Props = {
     product: ProductType;
