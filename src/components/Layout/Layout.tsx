@@ -4,16 +4,17 @@ import styles from './Layout.module.css';
 
 type Props = {
     title?: string;
+    noHeader?: boolean;
 };
 
-export const Layout: React.FC<Props> = ({ children, title }) => {
+export const Layout: React.FC<Props> = ({ children, title, noHeader }) => {
     return (
         <div className={styles.wrapper}>
             <Head>
                 {Boolean(title) && <title>{title}</title>}
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <Header />
+            {!noHeader && <Header />}
             <div className={styles.content}>{children}</div>
         </div>
     );
