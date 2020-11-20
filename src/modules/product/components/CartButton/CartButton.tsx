@@ -1,5 +1,5 @@
 import { ProductType } from '../../typings';
-import { addToCartStorage } from '../../utils';
+import { addToCartStorage } from '../../../cart/utils';
 
 type Props = {
     product: ProductType;

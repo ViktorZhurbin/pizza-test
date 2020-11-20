@@ -2,12 +2,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useContext, useEffect, useState } from 'react';
 
-import { deleteCartItem, updateCartQty } from '@/modules/cart/services';
+import { deleteCartItem } from '@/modules/cart/services';
 import { formatPrice } from '@/utils/string';
 
 import { CartItemType } from '../../typings';
 import styles from './CartItem.module.css';
 import { CurrencyContext } from '@/contexts/Currency';
+import { updateCartQtyStorage } from '../../utils';
 
 type Props = CartItemType;
 
@@ -18,7 +19,7 @@ export const CartItem: React.FC<Props> = ({ product, quantity }) => {
 
     useEffect(() => {
         if (Number(qty) !== quantity) {
-            updateCartQty(product._id, Number(qty));
+            updateCartQtyStorage(product._id, Number(qty));
         }
     }, [product._id, quantity, qty]);
 
