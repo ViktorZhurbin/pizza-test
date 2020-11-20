@@ -9,7 +9,7 @@ const setCart = (cart: CartItemType[]): void =>
     localStorage.setItem(CART_KEY, JSON.stringify(cart));
 
 const findCartItemIndex = (cart: CartItemType[], id: string): number =>
-    cart.findIndex((item) => item.product._id === id);
+    cart?.findIndex((item) => item.product._id === id);
 
 export const addToCartStorage = (product: ProductType): void => {
     const storageCart: CartItemType[] = getCart();

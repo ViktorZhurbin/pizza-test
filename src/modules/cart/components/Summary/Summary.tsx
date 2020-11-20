@@ -1,6 +1,6 @@
 import { CurrencyContext } from '@/contexts/Currency';
 import { formatPrice, getDeclension } from '@/utils/string';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CartItemType } from '../../typings';
 
 import styles from './Summary.module.css';
@@ -10,14 +10,24 @@ type Props = {
 };
 
 export const Summary: React.FC<Props> = ({ cart }) => {
+    const [cartQty, setCartQty] = useState<number>();
+    const [cartTotal, setCartTotal] = useState<number>();
     const { currency } = useContext(CurrencyContext);
-    const cartTotal = cart.reduce(
-        (total, item) => total + item.product.price[currency],
-        0
-    );
-    const cartQty = cart.reduce((qty, item) => qty + item.quantity, 0);
 
-    return (
+    useEffect(() => {
+        const qty = cart.reduce((qty, item) => qty + item.quantity, 0);
+        setCartQty(qty);
+    }, [cart]);
+    useEffect(() => {
+        const total = cart.reduce(
+            (total, item) =>
+                total + item.quantity * item.product.price[currency],
+            0
+        );
+        setCartTotal(total);
+    }, [cart, currency]);
+
+    return cartQty && cartTotal ? (
         <>
             <div className={styles.wrapper}>
                 <span className={styles.title}>Your Cart</span>
@@ -32,5 +42,5 @@ export const Summary: React.FC<Props> = ({ cart }) => {
                 </span>
             </div>
         </>
-    );
+    ) : null;
 };
