@@ -19,15 +19,15 @@
 }
 
 .price {
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.3;
     font-weight: bold;
 }
 
 .title {
-    color: #222;
+    color: #001a34;
     font-size: 14px;
-    line-height: 1.3em;
+    line-height: 1.3;
     overflow-wrap: break-word;
     word-break: break-word;
     cursor: pointer;
@@ -43,7 +43,7 @@
     width: 92px;
     padding: 5px 10px;
     font-size: 14px;
-    line-height: 18px;
+    line-height: 1.3;
     background-color: #fff;
     border: 2px solid #d6dbe0;
     border-radius: 3px;
@@ -51,7 +51,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    transition: border-color 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: border-color 0.2s ease-in;
 }
 
 .quantity:hover,
@@ -63,7 +63,7 @@
 .delete {
     margin-top: 16px;
     font-size: 14px;
-    line-height: 1.29em;
+    line-height: 1.3;
     color: #005bff;
     cursor: pointer;
     font-weight: 500;
