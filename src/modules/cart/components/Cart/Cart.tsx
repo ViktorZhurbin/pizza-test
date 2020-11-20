@@ -27,6 +27,7 @@ export const Cart: React.FC = () => {
                     key={product._id}
                     product={product}
                     quantity={quantity}
+                    onChange={setCart}
                 />
             ))}
             <button className={styles.checkoutBtn} onClick={handleCheckout}>

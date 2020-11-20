@@ -8,14 +8,14 @@ const getCart = (): CartItemType[] | null =>
 const setCart = (cart: CartItemType[]): void =>
     localStorage.setItem(CART_KEY, JSON.stringify(cart));
 
-const findCartItem = (cart: CartItemType[], id: string) =>
+const findCartItemIndex = (cart: CartItemType[], id: string): number =>
     cart.findIndex((item) => item.product._id === id);
 
 export const addToCartStorage = (product: ProductType): void => {
     const storageCart: CartItemType[] = getCart();
     const cart: CartItemType[] = storageCart ?? [];
 
-    const itemIndex = cart.length > 0 && findCartItem(storageCart, product._id);
+    const itemIndex = findCartItemIndex(storageCart, product._id);
 
     if (itemIndex >= 0) {
         cart[itemIndex].quantity += 1;
@@ -26,11 +26,25 @@ export const addToCartStorage = (product: ProductType): void => {
     setCart(cart);
 };
 
-export const updateCartQtyStorage = (id: string, qty: number): void => {
+export const updateCartQtyStorage = (
+    id: string,
+    qty: number
+): CartItemType[] => {
     const cart = getCart();
-    const itemIndex = findCartItem(cart, id);
+    const itemIndex = findCartItemIndex(cart, id);
 
     cart[itemIndex].quantity = qty;
 
     setCart(cart);
+
+    return cart;
+};
+
+export const deleteCartItemStorage = (id: string): CartItemType[] => {
+    const cart = getCart();
+    const updatedCart = cart.filter((item) => item.product._id !== id);
+
+    setCart(updatedCart);
+
+    return updatedCart;
 };

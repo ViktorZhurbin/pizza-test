@@ -2,29 +2,30 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useContext, useEffect, useState } from 'react';
 
-import { deleteCartItem } from '@/modules/cart/services';
 import { formatPrice } from '@/utils/string';
+import { CurrencyContext } from '@/contexts/Currency';
 
 import { CartItemType } from '../../typings';
 import styles from './CartItem.module.css';
-import { CurrencyContext } from '@/contexts/Currency';
-import { updateCartQtyStorage } from '../../utils';
+import { deleteCartItemStorage, updateCartQtyStorage } from '../../utils';
 
-type Props = CartItemType;
+type Props = CartItemType & { onChange(cart: CartItemType[]): void };
 
-export const CartItem: React.FC<Props> = ({ product, quantity }) => {
+export const CartItem: React.FC<Props> = ({ product, quantity, onChange }) => {
     const { _id, title, price, image } = product;
     const [qty, setQty] = useState(quantity.toString());
     const { currency } = useContext(CurrencyContext);
 
     useEffect(() => {
         if (Number(qty) !== quantity) {
-            updateCartQtyStorage(product._id, Number(qty));
+            const updatedCart = updateCartQtyStorage(product._id, Number(qty));
+            onChange(updatedCart);
         }
-    }, [product._id, quantity, qty]);
+    }, [product._id, quantity, qty, onChange]);
 
-    const handleDelete = async () => {
-        await deleteCartItem(product._id);
+    const handleDelete = () => {
+        const updatedCart = deleteCartItemStorage(product._id);
+        onChange(updatedCart);
     };
 
     return (
