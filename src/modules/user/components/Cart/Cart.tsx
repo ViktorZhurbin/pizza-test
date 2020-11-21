@@ -8,24 +8,28 @@ import { EmptyCart } from '../EmptyCart';
 import { Summary } from '../Summary';
 import styles from './Cart.module.css';
 import { fetchUser } from '../../services';
-import { getCartStorage, setCartStorage } from '../../utils';
+import { getCartStorage } from '../../utils';
+import { CART_KEY } from '../../constants';
 
 export const Cart: React.FC = () => {
     const [session, loading] = useSession();
     const [cart, setCart] = useState<CartType | null>(null);
 
     useEffect(() => {
-        if (session) {
-            fetchUser().then(({ cart }) => {
-                setCart(cart);
-                setCartStorage(cart);
-            });
-        }
         if (!loading && !session) {
             const cart = getCartStorage();
             cart && setCart(cart);
         }
     }, [session, loading]);
+
+    useEffect(() => {
+        if (session) {
+            fetchUser().then(({ data }) => {
+                localStorage.removeItem(CART_KEY);
+                setCart(data.cart);
+            });
+        }
+    }, [session]);
 
     if (loading) {
         return <div>Loading...</div>;

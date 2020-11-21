@@ -8,28 +8,22 @@ const handler = async (
 ): Promise<any> => {
     try {
         const {
-            body: { product },
+            body: { productId },
             user,
         } = req;
 
-        if (!product) {
-            throw new Error('Missing required field: product');
+        if (!productId) {
+            throw new Error('Missing required field: productId');
         }
 
-        const itemIndex = user.cart.findIndex(
-            (item) => item.product._id.toString() === product._id
+        user.cart = user.cart.filter(
+            (item) => item.product._id.toString() !== productId
         );
-
-        if (itemIndex !== -1) {
-            user.cart[itemIndex].quantity += 1;
-        } else {
-            user.cart.push({ product, quantity: 1 });
-        }
 
         const updatedUser = await user.save();
 
         if (!updatedUser) {
-            throw new Error(`Couldn't add product to cart: ${product}`);
+            throw new Error(`Couldn't delete productId: ${productId}`);
         }
 
         res.status(200).json({ data: updatedUser.cart });

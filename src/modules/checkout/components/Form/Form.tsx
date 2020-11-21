@@ -24,8 +24,7 @@ export const Form: React.FC = () => {
         resolver: yupResolver(schema),
     });
     const [submitted, setSubmitted] = useState(false);
-    const onSubmit = (data: Inputs) => {
-        console.log(data);
+    const onSubmit = () => {
         setSubmitted(true);
     };
 

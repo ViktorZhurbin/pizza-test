@@ -3,5 +3,5 @@ import { UserType } from '../typings';
 
 export * from './cart';
 
-export const fetchUser = (): Promise<UserType> =>
-    fetcher('/api/user/cart', 'GET');
+export const fetchUser = (): Promise<{ data: UserType }> =>
+    fetcher('/api/user', 'GET');

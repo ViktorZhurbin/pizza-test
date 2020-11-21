@@ -20,7 +20,7 @@ export const withUser = (handler: Handler) => async (
 
         await dbConnect();
 
-        const user = await UserModel.findOne({ _id: session.userId });
+        const user = await UserModel.findById(session.userId);
         if (!user) {
             return res.status(500).send('No user found');
         }
