@@ -18,6 +18,20 @@ export const userSchema = new mongoose.Schema<UserType>({
             },
         },
     ],
+    orders: [
+        {
+            date: Date,
+            items: [
+                {
+                    product: productSchema,
+                    quantity: {
+                        type: Number,
+                        required: true,
+                    },
+                },
+            ],
+        },
+    ],
 });
 
 export const UserModel =

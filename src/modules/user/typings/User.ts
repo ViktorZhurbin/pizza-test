@@ -1,4 +1,5 @@
 import { CartType } from './Cart';
+import { OrderType } from './Order';
 
 export type SessionUserType = {
     _id?: string;
@@ -10,4 +11,5 @@ export type SessionUserType = {
 
 export type UserType = SessionUserType & {
     cart: CartType;
+    orders: OrderType;
 };
