@@ -1,4 +1,4 @@
-import { CurrencyContext } from '@/contexts/Currency';
+import { LocaleContext } from '@/contexts/Locale';
 import { formatPrice, getDeclension } from '@/utils/string';
 import { useContext, useEffect, useState } from 'react';
 import { DELIVERY_COST } from '../../constants';
@@ -13,7 +13,7 @@ type Props = {
 export const Summary: React.FC<Props> = ({ cart }) => {
     const [cartQty, setCartQty] = useState<number>();
     const [cartTotal, setCartTotal] = useState<number>();
-    const { currency } = useContext(CurrencyContext);
+    const { locale, currency } = useContext(LocaleContext);
     const [deliveryCost, setDeliveryCost] = useState(DELIVERY_COST[currency]);
 
     useEffect(() => {
@@ -46,19 +46,19 @@ export const Summary: React.FC<Props> = ({ cart }) => {
             <div className={styles.wrapper}>
                 <span className={styles.lineTitle}>Items ({cartQty})</span>
                 <span className={styles.lineValue}>
-                    {formatPrice(cartTotal, currency)}
+                    {formatPrice(cartTotal, locale)}
                 </span>
             </div>
             <div className={styles.wrapper}>
                 <span className={styles.lineTitle}>Delivery cost</span>
                 <span className={styles.lineValue}>
-                    {formatPrice(deliveryCost, currency)}
+                    {formatPrice(deliveryCost, locale)}
                 </span>
             </div>
             <div className={styles.wrapper}>
                 <span className={styles.title}>Total</span>
                 <span className={styles.title}>
-                    {formatPrice(cartTotal + deliveryCost, currency)}
+                    {formatPrice(cartTotal + deliveryCost, locale)}
                 </span>
             </div>
         </section>

@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { useContext, useEffect, useState } from 'react';
 
 import { formatPrice } from '@/utils/string';
-import { CurrencyContext } from '@/contexts/Currency';
 
 import { CartType } from '../../typings';
 import styles from './CartItem.module.css';
@@ -12,6 +11,7 @@ import { ProductType } from '@/modules/product/typings';
 import { useSession } from 'next-auth/client';
 import { updateCartQty, deleteCartItem } from '../../services';
 import { useDebounce } from '@/hooks/useDebounce';
+import { LocaleContext } from '@/contexts/Locale';
 
 type Props = {
     product: ProductType;
@@ -24,7 +24,7 @@ export const CartItem: React.FC<Props> = ({ product, quantity, onChange }) => {
     const isAuth = !loading && Boolean(session);
     const { _id, title, price, image } = product;
     const [qty, setQty] = useState(quantity.toString());
-    const { currency } = useContext(CurrencyContext);
+    const { locale } = useContext(LocaleContext);
 
     const updatedQty = useDebounce<number>(Number(qty), 500);
 
@@ -60,7 +60,7 @@ export const CartItem: React.FC<Props> = ({ product, quantity, onChange }) => {
             <Image src={image} width={52} height={64} className={styles.img} />
             <div className={styles.innerWrapper}>
                 <span className={styles.price}>
-                    {formatPrice(price, currency)}
+                    {formatPrice(price, locale)}
                 </span>
                 <Link href={`/product/${_id}`}>
                     <a className={styles.title}>{title}</a>

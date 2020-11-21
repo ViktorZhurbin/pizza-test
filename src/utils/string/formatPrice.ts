@@ -1,11 +1,11 @@
-import { CURRENCY } from '@/constants/currency';
+import { CURRENCY_BY_LOCALE } from '@/constants';
 import { ProductType } from '@/modules/product/typings';
 
 export const formatPrice = (
     price: number | ProductType['price'],
-    currency: string
+    locale: string
 ): string => {
-    const locale = currency === CURRENCY.EUR ? 'de-DE' : 'en-US';
+    const currency = CURRENCY_BY_LOCALE[locale];
     const numPrice = typeof price === 'number' ? price : price[currency];
 
     return new Intl.NumberFormat(locale, {

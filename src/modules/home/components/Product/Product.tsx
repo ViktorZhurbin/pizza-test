@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useContext } from 'react';
-import { CurrencyContext } from '@/contexts/Currency';
 import { formatPrice } from '@/utils/string';
 
 import { ProductType } from '../../../product/typings';
 import styles from './Product.module.css';
+import { LocaleContext } from '@/contexts/Locale';
+import { useContext } from 'react';
 
 interface Props {
     product: ProductType;
@@ -14,7 +14,7 @@ interface Props {
 export const Product: React.FC<Props> = ({
     product: { _id, title, price, image },
 }) => {
-    const { currency } = useContext(CurrencyContext);
+    const { locale } = useContext(LocaleContext);
 
     return (
         <Link href={`/product/${_id}`}>
@@ -29,7 +29,7 @@ export const Product: React.FC<Props> = ({
                 />
                 <div className={styles.details}>
                     <div className={styles.price}>
-                        {formatPrice(price, currency)}
+                        {formatPrice(price, locale)}
                     </div>
                     <div className={styles.title}>{title}</div>
                 </div>
