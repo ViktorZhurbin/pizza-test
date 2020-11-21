@@ -1,1 +1,1 @@
-export { CartPage as default } from '@/modules/cart/pages';
+export { CartPage as default } from '@/modules/user/pages';

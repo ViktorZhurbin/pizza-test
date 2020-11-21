@@ -1,21 +1,37 @@
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { CART_KEY } from '../../constants';
+import { useSession } from 'next-auth/client';
+
 import { CartItemType } from '../../typings';
 import { CartItem } from '../CartItem';
 import { EmptyCart } from '../EmptyCart';
 import { Summary } from '../Summary';
 import styles from './Cart.module.css';
+import { fetchUser } from '../../services';
+import { getCartStorage, setCartStorage } from '../../utils';
 
 export const Cart: React.FC = () => {
+    const [session, loading] = useSession();
     const [cart, setCart] = useState<CartItemType[] | null>(null);
+
     useEffect(() => {
-        const cart = JSON.parse(localStorage.getItem(CART_KEY));
-        setCart(cart);
-    }, []);
+        if (session) {
+            fetchUser().then(({ cart }) => {
+                setCart(cart);
+                setCartStorage(cart);
+            });
+        }
+        if (!loading && !session) {
+            const cart = getCartStorage();
+            cart && setCart(cart);
+        }
+    }, [session, loading]);
 
-    const handleCheckout = () => null;
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
-    if (!cart?.length) {
+    if (!loading && !cart?.length) {
         return <EmptyCart />;
     }
 
@@ -30,9 +46,9 @@ export const Cart: React.FC = () => {
                     onChange={setCart}
                 />
             ))}
-            <button className={styles.checkoutBtn} onClick={handleCheckout}>
-                Checkout
-            </button>
+            <Link href="/checkout">
+                <button className={styles.checkoutBtn}>Checkout</button>
+            </Link>
             <Summary cart={cart} />
         </div>
     );

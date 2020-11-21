@@ -2,17 +2,17 @@ import { ProductType } from '@/modules/product/typings';
 import { CART_KEY } from '../constants';
 import { CartItemType } from '../typings';
 
-const getCart = (): CartItemType[] | null =>
+export const getCartStorage = (): CartItemType[] | null =>
     JSON.parse(localStorage.getItem(CART_KEY));
 
-const setCart = (cart: CartItemType[]): void =>
+export const setCartStorage = (cart: CartItemType[]): void =>
     localStorage.setItem(CART_KEY, JSON.stringify(cart));
 
 const findCartItemIndex = (cart: CartItemType[], id: string): number =>
     cart?.findIndex((item) => item.product._id === id);
 
 export const addToCartStorage = (product: ProductType): void => {
-    const storageCart: CartItemType[] = getCart();
+    const storageCart: CartItemType[] = getCartStorage();
     const cart: CartItemType[] = storageCart ?? [];
 
     const itemIndex = findCartItemIndex(storageCart, product._id);
@@ -23,28 +23,28 @@ export const addToCartStorage = (product: ProductType): void => {
         cart.push({ product, quantity: 1 });
     }
 
-    setCart(cart);
+    setCartStorage(cart);
 };
 
 export const updateCartQtyStorage = (
     id: string,
     qty: number
 ): CartItemType[] => {
-    const cart = getCart();
+    const cart = getCartStorage();
     const itemIndex = findCartItemIndex(cart, id);
 
     cart[itemIndex].quantity = qty;
 
-    setCart(cart);
+    setCartStorage(cart);
 
     return cart;
 };
 
 export const deleteCartItemStorage = (id: string): CartItemType[] => {
-    const cart = getCart();
+    const cart = getCartStorage();
     const updatedCart = cart.filter((item) => item.product._id !== id);
 
-    setCart(updatedCart);
+    setCartStorage(updatedCart);
 
     return updatedCart;
 };
