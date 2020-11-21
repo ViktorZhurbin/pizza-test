@@ -1,0 +1,26 @@
+.container {
+    position: sticky;
+    bottom: 0;
+    z-index: 15;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.sticky {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.linkWrapper {
+    display: flex;
+    padding: 10px 0;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    margin: 0 -16px;
+    align-items: stretch;
+    max-width: 100vw;
+    box-sizing: border-box;
+    overflow: hidden;
+}

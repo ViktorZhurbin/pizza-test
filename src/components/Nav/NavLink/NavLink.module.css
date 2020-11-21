@@ -1,0 +1,48 @@
+.link {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    line-height: 13px;
+    text-decoration: none;
+    color: #808d9a;
+    transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-property: color;
+}
+
+.link:hover {
+    text-decoration: none;
+}
+
+.active {
+    color: #005bff;
+}
+
+.icon {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    height: 24px;
+    width: 24px;
+}
+
+.title {
+    margin-top: 5px;
+}
+
+.counter {
+    position: absolute;
+    top: -5px;
+    background: #66bd09;
+    display: inline-block;
+    border-radius: 20px;
+    padding: 1px 5px;
+    color: #fff;
+    font-size: 11px;
+    line-height: 14px;
+    left: 50%;
+    margin-left: 8px;
+}

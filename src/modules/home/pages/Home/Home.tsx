@@ -21,7 +21,7 @@ export const HomePage: React.FC = () => {
     return (
         Array.isArray(data) &&
         !error && (
-            <Layout title="Best pizza in town">
+            <Layout>
                 <main className={styles.main}>
                     {data.map((product) => (
                         <Product key={product._id} product={product} />
