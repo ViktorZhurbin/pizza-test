@@ -17,6 +17,7 @@ const options = {
     callbacks: {
         session: async (session, user) => {
             session.userId = user.id;
+            session.userRole = user.role;
 
             return Promise.resolve(session);
         },
