@@ -17,6 +17,7 @@ const handler = async (
         }
 
         user.orders.push({ date: new Date(), items: cart });
+        user.cart = [];
 
         const updatedUser = await user.save();
 

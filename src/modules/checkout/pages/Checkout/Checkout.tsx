@@ -1,6 +1,7 @@
 import { Layout } from '@/components/Layout';
 import { useCart } from '@/hooks/useCart';
 import { Summary } from '@/modules/user/components/Summary';
+import { CART_KEY } from '@/modules/user/constants';
 import { addOrder } from '@/modules/user/services/order';
 import { useState } from 'react';
 import { Form } from '../../components/Form';
@@ -11,6 +12,7 @@ export const CheckoutPage: React.FC = () => {
 
     const handleSubmit = async () => {
         const data = await addOrder(cart);
+        localStorage.removeItem(CART_KEY);
         data && setSubmitted(true);
     };
 
