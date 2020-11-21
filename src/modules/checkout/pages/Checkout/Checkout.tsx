@@ -3,17 +3,21 @@ import { useCart } from '@/hooks/useCart';
 import { Summary } from '@/modules/user/components/Summary';
 import { CART_KEY } from '@/modules/user/constants';
 import { addOrder } from '@/modules/user/services/order';
+import { useSession } from 'next-auth/client';
 import { useState } from 'react';
 import { Form } from '../../components/Form';
 
 export const CheckoutPage: React.FC = () => {
     const [submitted, setSubmitted] = useState(false);
+    const [session] = useSession();
     const { cart } = useCart();
 
     const handleSubmit = async () => {
-        const data = await addOrder(cart);
+        if (session) {
+            await addOrder(cart);
+        }
         localStorage.removeItem(CART_KEY);
-        data && setSubmitted(true);
+        setSubmitted(true);
     };
 
     return (
