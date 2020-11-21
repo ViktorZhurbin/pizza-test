@@ -5,11 +5,16 @@ import { useContext, useEffect, useState } from 'react';
 import { formatPrice } from '@/utils/string';
 import { CurrencyContext } from '@/contexts/Currency';
 
-import { CartItemType } from '../../typings';
+import { CartType } from '../../typings';
 import styles from './CartItem.module.css';
 import { deleteCartItemStorage, updateCartQtyStorage } from '../../utils';
+import { ProductType } from '@/modules/product/typings';
 
-type Props = CartItemType & { onChange(cart: CartItemType[]): void };
+type Props = {
+    product: ProductType;
+    quantity: number;
+    onChange(cart: CartType): void;
+};
 
 export const CartItem: React.FC<Props> = ({ product, quantity, onChange }) => {
     const { _id, title, price, image } = product;

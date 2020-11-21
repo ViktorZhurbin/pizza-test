@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/client';
 
-import { CartItemType } from '../../typings';
+import { CartType } from '../../typings';
 import { CartItem } from '../CartItem';
 import { EmptyCart } from '../EmptyCart';
 import { Summary } from '../Summary';
@@ -12,7 +12,7 @@ import { getCartStorage, setCartStorage } from '../../utils';
 
 export const Cart: React.FC = () => {
     const [session, loading] = useSession();
-    const [cart, setCart] = useState<CartItemType[] | null>(null);
+    const [cart, setCart] = useState<CartType | null>(null);
 
     useEffect(() => {
         if (session) {

@@ -5,6 +5,4 @@ export type CartItemType = {
     quantity: number;
 };
 
-export type PopulatedCartItemType = Omit<CartItemType, 'product'> & {
-    product: ProductType;
-};
+export type CartType = CartItemType[];

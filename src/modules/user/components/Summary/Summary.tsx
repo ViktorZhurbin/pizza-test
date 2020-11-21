@@ -2,12 +2,12 @@ import { CurrencyContext } from '@/contexts/Currency';
 import { formatPrice, getDeclension } from '@/utils/string';
 import { useContext, useEffect, useState } from 'react';
 import { DELIVERY_COST } from '../../constants';
-import { CartItemType } from '../../typings';
+import { CartType } from '../../typings';
 
 import styles from './Summary.module.css';
 
 type Props = {
-    cart: CartItemType[];
+    cart: CartType;
 };
 
 export const Summary: React.FC<Props> = ({ cart }) => {
