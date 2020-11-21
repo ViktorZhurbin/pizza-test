@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import styles from './User.module.css';
 import Link from 'next/link';
+import { Orders } from '../Orders';
 import { UserType } from '../../typings';
 
 type Props = {
@@ -35,6 +36,9 @@ export const User: React.FC<Props> = ({ user }) => {
                         <a>Admin Panel</a>
                     </Link>
                 )}
+                <section className={styles.orders}>
+                    <Orders orders={user.orders} />
+                </section>
             </div>
         )
     );

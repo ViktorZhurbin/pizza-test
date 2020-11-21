@@ -1,0 +1,40 @@
+.order {
+    margin-bottom: 10px;
+    display: flex;
+    padding: 16px 0;
+}
+
+.title {
+    text-align: center;
+}
+
+.date {
+    margin-right: 25px;
+    line-height: 1.35;
+}
+
+.orderItem {
+    display: flex;
+    flex-direction: column;
+    color: #001a34;
+}
+
+.orderItem:hover {
+    color: #004ed6;
+}
+
+.price {
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    margin-right: 8px;
+    white-space: nowrap;
+    margin-bottom: 4px;
+}
+
+.product {
+    font-size: 14px;
+    margin-bottom: 2px;
+    line-height: 1.29;
+}
