@@ -18,8 +18,6 @@ export const UserProvider: React.FC = ({ children }) => {
         }
     }, [session]);
 
-    console.log('user', user);
-
     return (
         <UserContext.Provider value={{ ...user }}>
             {children}
