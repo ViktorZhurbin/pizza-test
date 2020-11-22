@@ -5,7 +5,14 @@ import styles from './Cart.module.css';
 import { useCart } from '@/hooks/useCart';
 
 export const Cart: React.FC = () => {
-    const { cart, setCart, isLoading } = useCart();
+    const {
+        cart,
+        total,
+        quantity,
+        deliveryCost,
+        setCart,
+        isLoading,
+    } = useCart();
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -26,7 +33,11 @@ export const Cart: React.FC = () => {
                     onChange={setCart}
                 />
             ))}
-            <Summary cart={cart} />
+            <Summary
+                total={total}
+                quantity={quantity}
+                deliveryCost={deliveryCost}
+            />
         </div>
     );
 };
