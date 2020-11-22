@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { phoneRegex } from '@/constants';
 import { Input } from '@/components/Form/Input';
 import styles from './Form.module.css';
+import { Button } from '@/components/Button';
 
 const schema = yup.object().shape({
     firstName: yup.string().required('First name is required'),
@@ -59,9 +60,9 @@ export const Form: React.FC<Props> = ({ onSubmit }) => {
                         error={errors.phone}
                     />
 
-                    <button type="submit" className={styles.button}>
+                    <Button type="submit" className={styles.button}>
                         Order
-                    </button>
+                    </Button>
                 </form>
             </>
         </section>

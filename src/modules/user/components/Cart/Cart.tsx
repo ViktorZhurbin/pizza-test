@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 import { CartItem } from '../CartItem';
 import { EmptyCart } from '../EmptyCart';
 import { Summary } from '../Summary';
@@ -28,9 +26,6 @@ export const Cart: React.FC = () => {
                     onChange={setCart}
                 />
             ))}
-            <Link href="/checkout">
-                <button className={styles.checkoutBtn}>Checkout</button>
-            </Link>
             <Summary cart={cart} />
         </div>
     );

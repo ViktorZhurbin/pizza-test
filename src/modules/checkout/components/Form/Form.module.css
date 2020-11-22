@@ -10,8 +10,10 @@
     align-items: center;
 }
 
-.button {
+button.button {
     margin-top: 25px;
+    width: 70%;
+    min-height: unset;
 }
 
 .input {

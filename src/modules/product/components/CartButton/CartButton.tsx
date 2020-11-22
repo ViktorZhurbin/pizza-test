@@ -2,6 +2,7 @@ import { ProductType } from '../../typings';
 import { addToCartStorage } from '../../../user/utils';
 import { useSession } from 'next-auth/client';
 import { addToCart } from '@/modules/user/services';
+import { Button } from '@/components/Button';
 
 type Props = {
     product: ProductType;
@@ -21,5 +22,5 @@ export const CartButton: React.FC<Props> = ({ product }) => {
     //     ? `${getDeclension('item', cartItem.quantity)} in cart`
     //     : 'Add to cart';
 
-    return <button onClick={handleAddToCart}>Add to cart</button>;
+    return <Button onClick={handleAddToCart}>Add to cart</Button>;
 };
