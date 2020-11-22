@@ -1,17 +1,28 @@
 import { signIn, signOut, useSession } from 'next-auth/client';
 import { LocaleContext } from '@/contexts/Locale';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styles from './Header.module.css';
 import { LOCALE } from '@/constants';
 
 export const Header: React.FC = () => {
     const { locale, setLocale } = useContext(LocaleContext);
     const [session, loading] = useSession();
-    const AuthButton = !session ? (
+    const [isAuth, setAuth] = useState(Boolean(session));
+
+    const handleSignOut = () => {
+        signOut();
+        setAuth(false);
+    };
+
+    const AuthButton = !isAuth ? (
         <button onClick={() => signIn()}>Sign in</button>
     ) : (
-        <button onClick={() => signOut()}>Sign out</button>
+        <button onClick={handleSignOut}>Sign out</button>
     );
+
+    useEffect(() => {
+        setAuth(Boolean(session));
+    }, [session]);
 
     return (
         <header className={styles.header}>
