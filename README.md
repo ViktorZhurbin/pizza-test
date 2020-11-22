@@ -2,7 +2,7 @@ Built with NextJS and Typescript.
 
 ## Demo
 
-`https://pizza-test.vercel.app`
+https://pizza-test.vercel.app
 
 ## Locally
 
