@@ -6,9 +6,6 @@ type CartResponse = {
     data: CartType;
 };
 
-export const clearCart = (): Promise<CartResponse> =>
-    fetcher('/api/user/cart/clear', 'PUT');
-
 export const updateCartQty = (
     productId: string,
     quantity: number

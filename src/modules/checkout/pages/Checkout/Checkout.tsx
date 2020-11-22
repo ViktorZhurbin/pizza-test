@@ -2,7 +2,7 @@ import { Layout } from '@/components/Layout';
 import { useUser } from '@/hooks/useUser';
 import { Summary } from '@/modules/user/components/Summary';
 import { CART_KEY } from '@/modules/user/constants';
-import { addOrder } from '@/modules/user/services/order';
+import { addOrder } from '@/modules/user/services';
 import { useSession } from 'next-auth/client';
 import { useState } from 'react';
 import { Form } from '../../components/Form';
