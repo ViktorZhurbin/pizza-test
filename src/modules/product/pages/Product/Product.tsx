@@ -18,7 +18,7 @@ export const Product: React.FC<Props> = ({ product }) => {
     const { locale } = useContext(LocaleContext);
 
     return (
-        <Layout>
+        <Layout stickyItem={<CartButton product={product} />}>
             <div className={styles.container}>
                 <Image
                     src={image}
@@ -33,7 +33,6 @@ export const Product: React.FC<Props> = ({ product }) => {
                 <h2 className={styles.title}>Description</h2>
                 <div className={styles.description}>{description}</div>
             </div>
-            <CartButton product={product} />
         </Layout>
     );
 };

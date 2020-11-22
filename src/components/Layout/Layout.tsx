@@ -6,12 +6,14 @@ import styles from './Layout.module.css';
 type Props = {
     title?: string;
     noHeader?: boolean;
+    stickyItem?: React.ReactElement;
 };
 
 export const Layout: React.FC<Props> = ({
     children,
     title = 'Best pizza in town',
     noHeader,
+    stickyItem,
 }) => {
     return (
         <div className={styles.wrapper}>
@@ -21,7 +23,7 @@ export const Layout: React.FC<Props> = ({
             </Head>
             {!noHeader && <Header />}
             <div className={styles.content}>{children}</div>
-            <Nav />
+            <Nav>{stickyItem}</Nav>
         </div>
     );
 };
