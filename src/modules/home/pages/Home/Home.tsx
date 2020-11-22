@@ -1,29 +1,20 @@
-import useSwr from 'swr';
-
 import { Layout } from '@/components/Layout';
-import { fetcher } from '@/utils/api';
 
 import { Product } from '../../components/Product';
 import { ProductType } from '../../../product/typings';
 
 import styles from './Home.module.css';
 
-export const HomePage: React.FC = () => {
-    const { data, error } = useSwr<ProductType[]>('/api/products', fetcher);
+type Props = {
+    products: ProductType[];
+};
 
-    if (!data && !error) {
-        return <div>Loading</div>;
-    }
-    if (error) {
-        return <div>Error</div>;
-    }
-
+export const Home: React.FC<Props> = ({ products }) => {
     return (
-        Array.isArray(data) &&
-        !error && (
+        Array.isArray(products) && (
             <Layout>
                 <main className={styles.main}>
-                    {data.map((product) => (
+                    {products.map((product) => (
                         <Product key={product._id} product={product} />
                     ))}
                 </main>
