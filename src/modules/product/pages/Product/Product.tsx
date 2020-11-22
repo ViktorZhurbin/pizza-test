@@ -5,7 +5,7 @@ import { formatPrice } from '@/utils/string';
 
 import { ProductType } from '@/modules/product/typings';
 import styles from './Product.module.css';
-import { CartButton } from '../../components/CartButton';
+import { AddToCartButton } from '../../components/AddToCartButton';
 import { useContext } from 'react';
 import { LocaleContext } from '@/contexts/Locale';
 
@@ -18,7 +18,7 @@ export const Product: React.FC<Props> = ({ product }) => {
     const { locale } = useContext(LocaleContext);
 
     return (
-        <Layout stickyItem={<CartButton product={product} />}>
+        <Layout stickyItem={<AddToCartButton product={product} />}>
             <div className={styles.container}>
                 <Image
                     src={image}
