@@ -7,8 +7,10 @@ import { useSession } from 'next-auth/client';
 import { useState } from 'react';
 import { Form } from '../../components/Form';
 
+import styles from './Checkout.module.css';
+
 export const CheckoutPage: React.FC = () => {
-    const [submitted, setSubmitted] = useState(false);
+    const [submitted, setSubmitted] = useState(true);
     const [session] = useSession();
     const { cart, mutate } = useUser();
 
@@ -25,7 +27,7 @@ export const CheckoutPage: React.FC = () => {
     return (
         <Layout>
             {submitted ? (
-                <p>
+                <p className={styles.submitted}>
                     We already started cooking your pizzas. Delivery service
                     will contact you soon!
                 </p>
