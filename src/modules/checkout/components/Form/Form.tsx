@@ -6,10 +6,13 @@ import { phoneRegex } from '@/constants';
 import { Input } from '@/components/Form/Input';
 import styles from './Form.module.css';
 import { Button } from '@/components/Button';
+import { useUser } from '@/hooks/useUser';
 
 const schema = yup.object().shape({
-    firstName: yup.string().required('First name is required'),
-    lastName: yup.string().required('Last name is required'),
+    name: yup
+        .string()
+        .min(2, 'Name must be at least 2 characters')
+        .required('Name is required'),
     phone: yup
         .string()
         .matches(phoneRegex, "This doesn't look like a valid phone")
@@ -24,6 +27,7 @@ type Props = {
 };
 
 export const Form: React.FC<Props> = ({ onSubmit }) => {
+    const { name } = useUser();
     const { register, handleSubmit, errors } = useForm<Inputs>({
         resolver: yupResolver(schema),
     });
@@ -34,16 +38,11 @@ export const Form: React.FC<Props> = ({ onSubmit }) => {
                 <h1>Delivery Details</h1>
                 <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
                     <Input
-                        name="firstName"
-                        placeholder="First name"
+                        name="name"
+                        placeholder="Name"
                         register={register}
-                        error={errors.firstName}
-                    />
-                    <Input
-                        name="lastName"
-                        placeholder="Last name"
-                        register={register}
-                        error={errors.lastName}
+                        error={errors.name}
+                        defaultValue={name}
                     />
                     <Input
                         name="address"
