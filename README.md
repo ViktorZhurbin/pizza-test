@@ -6,14 +6,6 @@ https://pizza-test.vercel.app
 
 ## Locally
 
-Install dependencies
+`npm i` or `yarn` to install dependencies
 
-Then run:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open `localhost:3000` with your browser to see the result.
+`npm run dev` or `yarn dev` will run the project on `localhost:3000`.
