@@ -10,7 +10,7 @@ import { Form } from '../../components/Form';
 import styles from './Checkout.module.css';
 
 export const CheckoutPage: React.FC = () => {
-    const [submitted, setSubmitted] = useState(true);
+    const [submitted, setSubmitted] = useState(false);
     const [session] = useSession();
     const { cart, mutate } = useUser();
 
