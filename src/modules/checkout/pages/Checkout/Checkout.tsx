@@ -20,6 +20,7 @@ export const CheckoutPage: React.FC = () => {
             mutate();
         } else {
             localStorage.removeItem(CART_KEY);
+            cart.setCart([]);
         }
         setSubmitted(true);
     };
