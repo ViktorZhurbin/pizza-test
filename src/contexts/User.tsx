@@ -9,7 +9,7 @@ import { useSession } from 'next-auth/client';
 import { CartType, UserType } from '@/modules/user/typings';
 import useSWR from 'swr';
 import { getCartStorage } from '@/modules/user/utils';
-import { DELIVERY_COST } from '@/modules/user/constants';
+import { CART_KEY, DELIVERY_COST } from '@/modules/user/constants';
 import { LocaleContext } from './Locale';
 
 export type UserContextType = Omit<UserType, 'cart'> & {
@@ -49,6 +49,7 @@ export const UserProvider: React.FC = ({ children }) => {
             cartStorage && setCart(cartStorage);
         } else {
             user && setCart(user.cart);
+            localStorage.removeItem(CART_KEY);
         }
     }, [session, loading, user]);
 

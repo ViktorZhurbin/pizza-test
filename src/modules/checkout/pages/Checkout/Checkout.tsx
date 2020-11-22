@@ -15,13 +15,14 @@ export const CheckoutPage: React.FC = () => {
     const handleSubmit = async () => {
         if (session) {
             await addOrder(cart.items);
+        } else {
+            localStorage.removeItem(CART_KEY);
         }
-        localStorage.removeItem(CART_KEY);
         setSubmitted(true);
     };
 
     return (
-        <Layout noHeader>
+        <Layout>
             {submitted ? (
                 <p>
                     We already started cooking your pizzas. Delivery service
