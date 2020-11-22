@@ -1,25 +1,30 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext } from 'react';
 import { useSession } from 'next-auth/client';
-import { fetchUser } from '@/modules/user/services';
 import { UserType } from '@/modules/user/typings';
+import useSWR from 'swr';
 
-export const UserContext = createContext<UserType | undefined>(undefined);
+export type State = {
+    user: UserType;
+    isLoading: boolean;
+    error: boolean | undefined;
+    mutate(): void;
+};
+
+export const UserContext = createContext<State | undefined>(undefined);
 
 export const UserProvider: React.FC = ({ children }) => {
     const [session] = useSession();
-    const [user, setUser] = useState(null);
-
-    useEffect(() => {
-        if (session) {
-            fetchUser().then(({ data }) => {
-                // localStorage.removeItem(CART_KEY);
-                setUser(data);
-            });
-        }
-    }, [session]);
+    const { data: user, error, mutate } = useSWR(session ? '/api/user' : null);
 
     return (
-        <UserContext.Provider value={{ ...user }}>
+        <UserContext.Provider
+            value={{
+                user,
+                error,
+                isLoading: !user && !error,
+                mutate,
+            }}
+        >
             {children}
         </UserContext.Provider>
     );

@@ -11,7 +11,7 @@ export const setCartStorage = (cart: CartType): void =>
 const findCartItemIndex = (cart: CartType, id: string): number =>
     cart?.findIndex((item) => item.product._id === id);
 
-export const addToCartStorage = (product: ProductType): void => {
+export const addToCartStorage = (product: ProductType): CartType => {
     const storageCart: CartType = getCartStorage();
 
     const itemIndex = findCartItemIndex(storageCart, product._id);
@@ -23,6 +23,8 @@ export const addToCartStorage = (product: ProductType): void => {
     }
 
     setCartStorage(storageCart);
+
+    return storageCart;
 };
 
 export const updateCartQtyStorage = (id: string, qty: number): CartType => {

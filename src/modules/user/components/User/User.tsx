@@ -3,13 +3,11 @@ import { useState } from 'react';
 import styles from './User.module.css';
 import Link from 'next/link';
 import { Orders } from '../Orders';
-import { UserType } from '../../typings';
+import { useUser } from '@/hooks/useUser';
 
-type Props = {
-    user: UserType;
-};
-export const User: React.FC<Props> = ({ user }) => {
+export const User: React.FC = () => {
     const [imageError, setImageError] = useState(false);
+    const user = useUser();
 
     return (
         user && (

@@ -1,5 +1,5 @@
 import { Layout } from '@/components/Layout';
-import { useCart } from '@/hooks/useCart';
+import { useUser } from '@/hooks/useUser';
 import { Summary } from '@/modules/user/components/Summary';
 import { CART_KEY } from '@/modules/user/constants';
 import { addOrder } from '@/modules/user/services/order';
@@ -10,11 +10,11 @@ import { Form } from '../../components/Form';
 export const CheckoutPage: React.FC = () => {
     const [submitted, setSubmitted] = useState(false);
     const [session] = useSession();
-    const { cart } = useCart();
+    const { cart } = useUser();
 
     const handleSubmit = async () => {
         if (session) {
-            await addOrder(cart);
+            await addOrder(cart.items);
         }
         localStorage.removeItem(CART_KEY);
         setSubmitted(true);
@@ -30,7 +30,7 @@ export const CheckoutPage: React.FC = () => {
             ) : (
                 <>
                     <Form onSubmit={handleSubmit} />
-                    {cart && <Summary cart={cart} />}
+                    <Summary />
                 </>
             )}
         </Layout>

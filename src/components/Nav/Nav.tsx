@@ -3,10 +3,10 @@ import IconHome from './icons/home.svg';
 import IconProfile from './icons/profile.svg';
 import styles from './Nav.module.css';
 import { NavLink } from './NavLink';
-import { useCart } from '@/hooks/useCart';
+import { useUser } from '@/hooks/useUser';
 
 export const Nav: React.FC = ({ children }) => {
-    const { cart } = useCart();
+    const { cart } = useUser();
 
     return (
         <nav className={styles.container}>
@@ -17,7 +17,7 @@ export const Nav: React.FC = ({ children }) => {
                     title="Cart"
                     icon={<IconCart />}
                     href="/cart"
-                    counter={cart?.length}
+                    counter={cart?.quantity}
                 />
                 <NavLink
                     title="Profile"

@@ -1,42 +1,40 @@
 import { LocaleContext } from '@/contexts/Locale';
+import { useUser } from '@/hooks/useUser';
 import { formatPrice, getDeclension } from '@/utils/string';
 import { useContext } from 'react';
 
 import styles from './Summary.module.css';
 
-type Props = {
-    total: number;
-    quantity: number;
-    deliveryCost: number;
-};
-
-export const Summary: React.FC<Props> = ({ total, quantity, deliveryCost }) => {
+export const Summary: React.FC = () => {
     const { locale } = useContext(LocaleContext);
+    const { cart } = useUser();
 
-    return quantity && total ? (
+    return cart?.quantity && cart?.total ? (
         <section className={styles.container}>
             <div className={styles.wrapper}>
                 <span className={styles.title}>Your cart</span>
                 <span className={styles.subtitle}>
-                    {getDeclension('item', quantity)}
+                    {getDeclension('item', cart?.quantity)}
                 </span>
             </div>
             <div className={styles.wrapper}>
-                <span className={styles.lineTitle}>Items ({quantity})</span>
+                <span className={styles.lineTitle}>
+                    Items ({cart?.quantity})
+                </span>
                 <span className={styles.lineValue}>
-                    {formatPrice(total, locale)}
+                    {formatPrice(cart?.total, locale)}
                 </span>
             </div>
             <div className={styles.wrapper}>
                 <span className={styles.lineTitle}>Delivery cost</span>
                 <span className={styles.lineValue}>
-                    {formatPrice(deliveryCost, locale)}
+                    {formatPrice(cart?.deliveryCost, locale)}
                 </span>
             </div>
             <div className={styles.wrapper}>
                 <span className={styles.title}>Total</span>
                 <span className={styles.title}>
-                    {formatPrice(total + deliveryCost, locale)}
+                    {formatPrice(cart?.total + cart?.deliveryCost, locale)}
                 </span>
             </div>
         </section>
