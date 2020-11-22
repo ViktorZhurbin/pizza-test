@@ -10,11 +10,12 @@ import { Form } from '../../components/Form';
 export const CheckoutPage: React.FC = () => {
     const [submitted, setSubmitted] = useState(false);
     const [session] = useSession();
-    const { cart } = useUser();
+    const { cart, mutate } = useUser();
 
     const handleSubmit = async () => {
         if (session) {
             await addOrder(cart.items);
+            mutate();
         } else {
             localStorage.removeItem(CART_KEY);
         }
