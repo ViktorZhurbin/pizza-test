@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import { ProductModel } from '@/db/models';
 import { dbConnect } from '@/db/utils';
+import { getSession } from 'next-auth/client';
 
 export default async (
     req: NextApiRequest,
@@ -9,6 +10,13 @@ export default async (
 ): Promise<any> => {
     try {
         const { method, body } = req;
+
+        const session = await getSession({ req });
+
+        if (!session) {
+            res.status(401).json({ error: 'Unauthorized' });
+            throw new Error('Unauthorized');
+        }
 
         await dbConnect();
 
