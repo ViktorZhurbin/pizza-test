@@ -1,1 +1,6 @@
-<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M0 0h24v24H0z"></path><path d="M6 6a4 4 0 014-4h4a4 4 0 014 4v2h5.133L21.82 18.496A4 4 0 0117.85 22H6.149a4 4 0 01-3.969-3.504L.867 8H6V6zm6 2a1 1 0 010 2H3.133l1.03 8.248A2 2 0 006.149 20h11.704a2 2 0 001.984-1.752L20.867 10H16V6a2 2 0 00-2-2h-4a2 2 0 00-2 2v2h4z" fill="currentColor" fill-rule="nonzero"></path></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <circle cx="9" cy="19" r="2" />
+  <circle cx="17" cy="19" r="2" />
+  <path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2" />
+</svg>

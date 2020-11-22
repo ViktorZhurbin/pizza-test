@@ -1,10 +1,6 @@
-<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
-    <g fill="none" fill-rule="evenodd">
-        <path d="M0 0h24v24H0z"></path>
-        <path
-            d="M8 20v-5a4 4 0 118 0v1a1 1 0 01-2 0v-1a2 2 0 10-4 0v7H2V10.032l10-8.334 10 8.334V22h-7a1 1 0 010-2h5v-9.032l-8-6.666-8 6.666V20h4z"
-            fill="currentColor"
-            fill-rule="nonzero"
-        ></path>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
 </svg>
